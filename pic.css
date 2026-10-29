@@ -1,0 +1,109 @@
+
+    form {
+        width: 400px;
+        margin: 30px auto;
+        padding: 30px;
+        border: 8px solid #19191a;
+        border-radius: 10px;
+        font-size: 30px;
+    }
+
+    input {
+        width: 100%;
+        padding: 30px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 30px;
+        background: rgb(0, 0, 0);
+        color: rgb(211, 10, 10);
+        border: 2px;
+        border-radius: 10px;
+    cursor: pointer;
+    }
+
+    button:hover {
+        background: #111111;
+    }
+.es{
+    text-align: center;
+}
+.features {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    padding: 40px;
+}
+
+.card {
+    width: 250px;
+    padding: 30px;
+    background: #e0ee18;
+    color: rgb(23, 24, 23);
+    border-radius: 18px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.card button {
+    padding:15px;
+    border: 10px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    color:rgb(211, 10, 10);
+}
+
+
+body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px #00000015;
+        }
+
+        .card h2 {
+            color: #2563eb;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .description {
+            display: none;
+            margin-top: 15px;
+            color: #444;
+            line-height: 1.5;
+        }

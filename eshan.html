@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple form</title>
+    <link rel="stylesheet" href="pic.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>My Form</title>
+</head>
+<body>
+
+    <h1 class="es">Registration Form</h1>
+
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name">
+
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email">
+
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password">
+
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age">
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+</body>
+<section class="features">
+    <div class="card">
+        <h2 class="m">🏍️ Riders</h2>
+        <p>Explore MotoGP riders, teams, and their latest statistics.</p>
+        <button>Explore Riders</button>
+    </div>
+
+    <div class="card">
+        <h2>🏆 Championship</h2>
+        <p >Check the current championship standings and points.</p>
+        <button>View Standings</button>
+    </div>
+
+    <div class="card">
+        <h2>🏁 Race Calendar</h2>
+        <p>Find upcoming MotoGP races and racing circuits.</p>
+        <button>View Calendar</button>
+    </div>
+
+    <div class="card">
+        <h2>⚡ Race Results</h2>
+        <p>See the latest race results and finishing positions.</p>
+        <button>View Results</button>
+    </div>
+
+</section>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova - Modern Landing Page</title>
+
+    <style>
+        * {
+            margin: 4px;
+            padding: 4px;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #181717;
+            background: white;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eeeeee;
+            background: #dad8d8;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #2b08ca;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d80d0d;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2708b1;
+        }
+
+        .nav-btn {
+            background: #171717;
+            color: rgb(216, 11, 11);
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background:
+                radial-gradient(circle at 20% 20%, #290797 0, transparent 30%),
+                radial-gradient(circle at 80% 30%, #097dbb 0, transparent 30%),
+                #940a0a;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #242222;
+            border-radius: 30px;
+            color: #2508a8;
+            font-size: 14px;
+            margin-bottom: 25px;
+            background: rgb(138, 16, 16);
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 82px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #210c81;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 9px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #17046b;
+            color: rgb(36, 5, 5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #940404;
+            background: rgb(41, 38, 38);
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        /* TRUST */
+        .trust {
+            padding: 45px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .trust p {
+            color: #999;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .companies {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            color: #888;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        .section-heading span {
+            color: #6c4df6;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .section-heading h2 {
+            font-size: 45px;
+            margin: 10px 0 15px;
+            line-height: 1.1;
+        }
+
+        .section-heading p {
+            color: #777;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            padding: 35px;
+            border: 1px solid #e8e8e8;
+            border-radius: 18px;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0edff;
+            color: #6c4df6;
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .feature-card p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 100px 0;
+            background: #f8f8fb;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 450px;
+            border-radius: 25px;
+            background:
+                linear-gradient(135deg, #6c4df6, #9c8aff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 100px;
+            box-shadow: 0 30px 60px rgba(108,77,246,0.25);
+        }
+
+        .about-text span {
+            color: #6c4df6;
+            font-weight: bold;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 12px 0 20px;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .check-list li {
+            margin: 12px 0;
+            font-weight: 600;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            color: #6c4df6;
+            margin-right: 10px;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 100px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 18px;
+        }
+
+        .stars {
+            color: #f5a623;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .person {
+            font-weight: bold;
+        }
+
+        .person small {
+            display: block;
+            color: #999;
+            font-weight: normal;
+            margin-top: 3px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            background: #171717;
+            color: white;
+            padding: 80px 30px;
+            text-align: center;
+            border-radius: 25px;
+        }
+
+        .cta-box h2 {
+            font-size: 50px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            color: #bbb;
+            max-width: 550px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f7f7f7;
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand p {
+            color: #777;
+            margin-top: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 70px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #777;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .copyright {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .feature-grid,
+            .testimonial-grid,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 300px;
+            }
+
+            .section-heading h2,
+            .about-text h2,
+            .cta-box h2 {
+                font-size: 36px;
+            }
+
+            .companies {
+                gap: 25px;
+            }
+
+            .footer-links {
+                gap: 35px;
+            }
+        }
+        .ed{
+            image-orientation: flip;
+            margin-left: 120%;
+            border-radius: 40px solid black;
+            border: #171717;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">No<span>va</span></a>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+
+                <a href="#contact" class="nav-btn">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="badge">
+                    ✦ The future of digital experiences
+                </div>
+
+                <h1>
+                    Build something
+                    <span>extraordinary.</span>
+                    <img class="ed" src="795.png" alt="" width="350px" height="400px">
+                </h1>
+
+                <p>
+                    Create beautiful digital experiences that help your
+                    business grow faster, connect with customers, and stand out
+                    from the competition.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        Start Creating →
+                    </a>
+
+                    <a href="#features" class="btn btn-secondary">
+                        Explore Features
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust">
+        <div class="container">
+
+            <p>TRUSTED BY INNOVATIVE TEAMS</p>
+
+            <div class="companies">
+                <span>Vertex</span>
+                <span>Flow</span>
+                <span>Orbit</span>
+                <span>Vertex</span>
+                <span>Cloudly</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>FEATURES</span>
+                <h2>Everything you need to grow</h2>
+                <p>
+                    Powerful tools designed to make your workflow easier,
+                    faster, and more productive.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>
+                        Optimized performance gives your users a smooth and
+                        incredibly fast experience.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">◈</div>
+                    <h3>Modern Design</h3>
+                    <p>
+                        Clean and beautiful interfaces that look great on
+                        every device and screen size.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>Secure Platform</h3>
+                    <p>
+                        Keep your information safe with modern security
+                        practices and reliable infrastructure.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Smart Analytics</h3>
+                    <p>
+                        Understand your users and make better decisions using
+                        powerful analytics.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">☁</div>
+                    <h3>Cloud Ready</h3>
+                    <p>
+                        Access your work anywhere and scale your projects
+                        effortlessly.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">♾</div>
+                    <h3>Easy Integration</h3>
+                    <p>
+                        Connect your favorite tools and services without
+                        complicated setup.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+
+            <div class="about-content">
+
+                <div class="about-image">
+                    ✦
+                </div>
+
+                <div class="about-text">
+                    <span>WHY NOVA?</span>
+
+                    <h2>
+                        Designed for people who think bigger.
+                    </h2>
+
+                    <p>
+                        Nova gives teams the tools they need to turn ideas
+                        into powerful digital products without unnecessary
+                        complexity.
+                    </p>
+
+                    <ul class="check-list">
+                        <li>Simple and intuitive interface</li>
+                        <li>Built for teams of every size</li>
+                        <li>Powerful customization options</li>
+                        <li>Reliable customer support</li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-primary">
+                        Learn More →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>TESTIMONIALS</span>
+                <h2>Loved by our customers</h2>
+                <p>
+                    See what people are saying about their experience with
+                    Nova.
+                </p>
+            </div>
+
+            <div class="testimonial-grid">
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "Nova completely changed the way our team works.
+                        Everything feels simpler and more organized."
+                    </p>
+                    <div class="person">
+                        Sarah Khan
+                        <small>Product Designer</small>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "The design is beautiful and the performance is
+                        excellent. Our customers immediately noticed the
+                        difference."
+                    </p>
+                    <div class="person">
+                        Ahmed Ali
+                        <small>Startup Founder</small>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>
+                        "A fantastic platform for teams that want to move
+                        quickly without sacrificing quality."
+                    </p>
+                    <div class="person">
+                        Maria James
+                        <small>Marketing Manager</small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="container">
+
+            <div class="cta-box">
+
+                <h2>Ready to build something amazing?</h2>
+
+                <p>
+                    Start your journey today and turn your ideas into
+                    something extraordinary.
+                </p>
+
+                <a href="#" class="btn btn-primary">
+                    Get Started Today →
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                    <div class="logo">No<span>va</span></div>
+
+                    <p>
+                        Building better digital experiences for modern teams.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#">Features</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Updates</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 Nova. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+<h2>What Can JavaScript Do?</h2>
+
+<p>JavaScript can change HTML attribute values.</p>
+
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+<img src="795.png" alt="">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+<script src="/eshan.js"></script>
+</body>
+</html>
+
+</html>
+```
+
+</html>
+    
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Cards</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px #00000015;
+        }
+
+        .card h2 {
+            color: #2563eb;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .description {
+            display: none;
+            margin-top: 15px;
+            color: #444;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Our Features</h1>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>⚡ Fast Performance</h2>
+            <p>Make your website fast and smooth.</p>
+            <button onclick="toggleDescription('desc1', this)">
+                Learn More
+            </button>
+            <div class="description" id="desc1">
+                Optimize your website for faster loading
+                and a better user experience.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📱 Responsive Design</h2>
+            <p>Works on every device.</p>
+            <button onclick="toggleDescription('desc2', this)">
+                Learn More
+            </button>
+            <div class="description" id="desc2">
+                This design adjusts to mobile, tablet,
+                and desktop screen sizes.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔒 Secure System</h2>
+            <p>Keep your data protected.</p>
+            <button onclick="toggleDescription('desc3', this)">
+                Learn More
+            </button>
+            <div class="description" id="desc3">
+                Security practices help protect your
+                website and user information.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleDescription(id, button) {
+            const description =
+                document.getElementById(id);
+
+            if (description.style.display === "block") {
+                description.style.display = "none";
+                button.textContent = "Learn More";
+            } else {
+                description.style.display = "block";
+                button.textContent = "Show Less";
+            }
+        }
+    </script>
+
+</body>
+</html>
