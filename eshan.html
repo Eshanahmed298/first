@@ -3,684 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="mea.css">
+    <title>Daraz Product Store</title>
+    <link rel="stylesheet" href="pic.css">
 </head>
 <body>
-    
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daraz Product Store</title>
-
-<style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    background: #fff;
-}
-
-/* Header */
-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px 25px;
-    border-bottom: 2px solid #eee;
-}
-
-.logo {
-    color: #f85606;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.search {
-    display: flex;
-    flex: 1;
-}
-
-.search input {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    background: #f4f4f4;
-    font-size: 16px;
-}
-
-.search button {
-    background: #f85606;
-    color: white;
-    border: none;
-    padding: 0 20px;
-    cursor: pointer;
-}
-
-.categories {
-    padding: 14px 30px;
-    border-bottom: 2px solid #eee;
-}
-
-/* Layout */
-.layout {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 20px;
-    padding: 20px 12px;
-}
-
-.filter {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.filter h3 {
-    font-size: 15px;
-    font-weight: normal;
-}
-
-.filter label {
-    display: block;
-    margin: 12px 0;
-    font-size: 13px;
-}
-
-.filter input[type="checkbox"] {
-    accent-color: #f85606;
-}
-
-.price-inputs {
-    display: flex;
-    gap: 5px;
-}
-
-.price-inputs input {
-    width: 45%;
-    min-width: 0;
-    padding: 8px;
-    border: 1px solid #ccc;
-}
-
-/* Product cards */
-.products {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-    align-items: start;
-}
-
-.card {
-    padding: 8px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    min-width: 0;
-    transition: 0.2s;
-}
-
-.card:hover {
-    border-color: #eee;
-    box-shadow: 0 3px 12px #ddd;
-}
-
-.product-image {
-    height: 205px;
-    position: relative;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.discount {
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    background: #f85606;
-    color: white;
-    padding: 5px;
-    font-size: 12px;
-}
-
-.card h3 {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.5;
-    height: 42px;
-    overflow: hidden;
-}
-
-.description {
-    font-size: 12px;
-    color: #777;
-    line-height: 1.5;
-    height: 36px;
-    overflow: hidden;
-}
-
-.price {
-    color: #f85606;
-    font-size: 19px;
-    margin: 8px 0;
-}
-
-.old-price {
-    color: #999;
-    text-decoration: line-through;
-    font-size: 12px;
-}
-
-.rating {
-    color: orange;
-    margin-top: 10px;
-}
-
-.rating span {
-    color: #777;
-    font-size: 12px;
-}
-
-.delivery {
-    color: #139d82;
-    font-size: 12px;
-    margin-top: 8px;
-}
-
-/* Color options */
-.color-options {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 12px 0;
-}
-
-.color-label {
-    font-size: 12px;
-    color: #555;
-}
-
-.color-circle {
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    border: 2px solid white;
-    outline: 1px solid #bbb;
-    cursor: pointer;
-    padding: 0;
-}
-
-.color-circle.selected {
-    outline: 2px solid #f85606;
-}
-
-.color-name {
-    font-size: 12px;
-    color: #555;
-}
-
-/* Buttons */
-button {
-    cursor: pointer;
-}
-
-.card-button {
-    padding: 9px 10px;
-    border: none;
-    border-radius: 3px;
-    margin-top: 8px;
-    font-size: 12px;
-}
-
-.details-btn {
-    background: #fff0e8;
-    color: #f85606;
-}
-
-.add-btn {
-    background: #f85606;
-    color: white;
-}
-
-/* Details popup */
-#popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: #0009;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 10;
-}
-
-.popup-content {
-    background: white;
-    width: 700px;
-    max-width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 25px;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    gap: 25px;
-}
-
-.popup-content img {
-    width: 45%;
-    object-fit: contain;
-}
-
-.popup-content p {
-    line-height: 1.6;
-    color: #666;
-}
-
-.popup-price {
-    color: #f85606;
-    font-size: 25px;
-}
-
-.close {
-    position: absolute;
-    right: 12px;
-    top: 8px;
-    border: none;
-    background: white;
-    font-size: 25px;
-}
-
-.cart {
-    color: #f85606;
-    font-weight: bold;
-}
-
-@media (max-width: 800px) {
-    .layout {
-        grid-template-columns: 150px 1fr;
-    }
-
-    .products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 520px) {
-    .layout {
-        display: block;
-    }
-
-    .sidebar {
-        display: none;
-    }
-
-    .products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 5px;
-    }
-
-    .product-image {
-        height: 140px;
-    }
-
-    .card h3 {
-        font-size: 12px;
-    }
-
-    .popup-content {
-        flex-direction: column;
-    }
-
-    .popup-content img {
-        width: 100%;
-        height: 180px;
-    }
-}
-</style>
-</head>
-
-<body>
-
 <header>
     <div class="logo">◆ Daraz</div>
 
-    <form class="search" id="searchForm">
-        <input id="searchInput"
-               placeholder="Search products..."
-               value="headphones">
-        <button type="submit">⌕</button>
-    </form>
+        <form class="search" id="searchForm">
+            <input id="searchInput"
+                   placeholder="Search products..."
+                   value="headphones">
+            <button type="submit">⌕</button>
+        </form>
 
-    <div class="cart">
-        🛒 <span id="cartCount">0</span>
-    </div>
-</header>
-
-<div class="categories">Categories　⌄</div>
-
-<div class="layout">
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-
-        <div class="filter">
-            <h3>Service</h3>
-            <label><input type="checkbox"> Installment</label>
-            <label><input type="checkbox"> Cash On Delivery</label>
-            <label><input type="checkbox"> Free Shipping</label>
-            <label><input type="checkbox"> DarazMall</label>
+        <div class="cart">
+            🛒 <span id="cartCount">0</span>
         </div>
+    </header>
 
-        <div class="filter">
-            <h3>Location</h3>
-            <label><input type="checkbox"> Pakistan</label>
-            <label><input type="checkbox" checked> China</label>
-        </div>
+    <div class="categories">Categories　⌄</div>
 
-        <div class="filter">
-            <h3>Price</h3>
-            <div class="price-inputs">
-                <input type="number" id="min" placeholder="Min">
-                <input type="number" id="max" placeholder="Max">
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="filter">
+                <h3>Service</h3>
+                <label><input type="checkbox"> Installment</label>
+                <label><input type="checkbox"> Cash On Delivery</label>
+                <label><input type="checkbox"> Free Shipping</label>
+                <label><input type="checkbox"> DarazMall</label>
             </div>
-            <button onclick="filterPrice()">Apply</button>
-        </div>
 
-        <div class="filter">
-            <h3>Rating</h3>
-            <div class="rating">★★★★★</div>
-        </div>
+            <div class="filter">
+                <h3>Location</h3>
+                <label><input type="checkbox"> Pakistan</label>
+                <label><input type="checkbox" checked> China</label>
+            </div>
 
-    </aside>
+            <div class="filter">
+                <h3>Price</h3>
+                <div class="price-inputs">
+                    <input type="number" id="min" placeholder="Min">
+                    <input type="number" id="max" placeholder="Max">
+                </div>
+                <button onclick="filterPrice()">Apply</button>
+            </div>
 
-    <!-- Products -->
-    <main class="products" id="products"></main>
+            <div class="filter">
+                <h3>Rating</h3>
+                <div class="rating">★★★★★</div>
+            </div>
+        </aside>
 
-</div>
-
-<!-- Product Details Popup -->
-<div id="popup" onclick="if(event.target===this)closeDetails()">
-    <div class="popup-content">
-
-        <button class="close" onclick="closeDetails()">×</button>
-
-        <img id="detailImage" src="" alt="Product">
-
-        <div>
-            <h2 id="detailName"></h2>
-            <div class="popup-price" id="detailPrice"></div>
-            <div class="rating">★★★★★</div>
-
-            <p id="detailDescription"></p>
-
-            <p><b>Selected Color:</b>
-                <span id="detailColor"></span>
-            </p>
-
-            <p><b>Delivery:</b> Options available at checkout.</p>
-
-            <button class="card-button add-btn"
-                    onclick="addToCart()">
-                Add to Cart
-            </button>
-
-            <button class="card-button details-btn"
-                    onclick="closeDetails()">
-                Continue Shopping
-            </button>
-        </div>
-
+        <main class="products" id="products"></main>
     </div>
-</div>
 
-<script>
-const products = [
-    {
-        name: "Wired Gaming Headset for PS4 and Xbox",
-        price: 1790,
-        oldPrice: 2560,
-        discount: "30%",
-        rating: "(42)",
-        colors: {
-            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDQP4-uNWGP68lNdLZ9J7y98P9dhWw98MYoFIf5-wjHA&s",
-            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtaOhxmFsqcLs3L0IbWXpUajt4RFSUnoWYdK61rAhQA&s=10",
-            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIxQZn_6fKd4P3ViJZFHkv5HeSVadsagw0JkNoQ5GlrA&s=10",
-        },
-        description: "Comfortable gaming headset with padded ear cups, a microphone and clear sound for gaming, calls and music."
-    },
-    {
-        name: "Colorful Over Ear Headphones with Mic",
-        price: 1739,
-        oldPrice: 3499,
-        discount: "50%",
-        rating: "(15)",
-        colors: {
-            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqrFUkzQ1MFaIXk2VDu0lPoJjnnKDasNDmxiIcZLN9Cg&s=10",
-            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlujVtD7-IBvAutSj43KBT2SD42bUIpYX_GUQBKL0ZNw&s=10",
-            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcSQlOYSq7Dj8_ZXVfwidH_B8WyZn1dVtUEp4_colZNw&s=10",
-        },
-        description: "Stylish over-ear headphones for comfortable listening, music, videos and everyday entertainment."
-    },
-    {
-        name: "Over Ear Headphones for Laptop and Phone",
-        price: 1648,
-        oldPrice: 3400,
-        discount: "52%",
-        rating: "(28)",
-        colors: {
-            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYi-a-prBQtGhhFHBGV_JSrbHoFGENQZHVKjSbEuvjbQ&s=10",
-            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKUpYXc9O0-xRj9gQqo84J0DlgcH70pfnEHnbmXRkU1w&s=10",
-            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6M660oaccmWXMDS3k6GDMMeVtoSG6__ZrJ6J7uhCHbg&s=10"
-        },
-        description: "Modern headphones with cushioned ear pads for laptops, phones and entertainment."
-    }
-];
+    <div id="popup" onclick="if(event.target===this)closeDetails()">
+        <div class="popup-content">
+            <button class="close" onclick="closeDetails()">×</button>
+            <img id="detailImage" src="" alt="Product">
 
-let visibleProducts = [...products];
-let selectedProduct = null;
-let cartCount = 0;
+            <div>
+                <h2 id="detailName"></h2>
+                <div class="popup-price" id="detailPrice"></div>
+                <div class="rating">★★★★★</div>
 
-function displayProducts(list) {
-    const container = document.getElementById("products");
-    container.innerHTML = "";
+                <p id="detailDescription"></p>
 
-    if (list.length === 0) {
-        container.innerHTML = "<p>No products found.</p>";
-        return;
-    }
+                <p><b>Selected Color:</b>
+                    <span id="detailColor"></span>
+                </p>
 
-    list.forEach(product => {
-        const index = products.indexOf(product);
+                <p><b>Delivery:</b> Options available at checkout.</p>
 
-        container.insertAdjacentHTML("beforeend", `
-            <article class="card">
-
-                <div class="product-image"
-                     onclick="showDetails(${index})">
-                    <img class="main-image"
-                         src="${product.colors.Blue}"
-                         alt="${product.name}">
-                    <span class="discount">-${product.discount}</span>
-                </div>
-
-                <h3 onclick="showDetails(${index})">
-                    ${product.name}
-                </h3>
-
-                <p class="description">${product.description}</p>
-
-                <div class="color-options">
-                    <span class="color-label">Color:</span>
-
-                    <button class="color-circle selected"
-                        style="background:red"
-                        title="Red"
-                        onclick="selectColor(event,${index},'Red',this)">
-                    </button>
-
-                    <button class="color-circle"
-                        style="background:blue"
-                        title="Blue"
-                        onclick="selectColor(event,${index},'Blue',this)">
-                    </button>
-
-                    <button class="color-circle"
-                        style="background:black"
-                        title="Black"
-                        onclick="selectColor(event,${index},'Black',this)">
-                    </button>
-
-                    <span class="color-name">Red</span>
-                </div>
-
-                <div class="price">
-                    Rs. ${product.price.toLocaleString()}
-                </div>
-
-                <span class="old-price">
-                    Rs. ${product.oldPrice.toLocaleString()}
-                </span>
-
-                <span style="font-size:12px">
-                    -${product.discount}
-                </span>
-
-                <div class="delivery">✓ Delivery options available</div>
-
-                <div class="rating">
-                    ★★★★★ <span>${product.rating}</span>
-                </div>
-
-                <button class="card-button details-btn"
-                    onclick="showDetails(${index})">
-                    View Details
-                </button>
-
-                <button class="card-button add-btn"
-                    onclick="addProductToCart(event,${index})">
+                <button class="card-button add-btn" onclick="addToCart()">
                     Add to Cart
                 </button>
 
-            </article>
-        `);
-    });
-}
+                <button class="card-button details-btn" onclick="closeDetails()">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
 
-/* Change color and image */
-function selectColor(event, index, color, button) {
-    event.stopPropagation();
-
-    const card = button.closest(".card");
-
-    card.querySelectorAll(".color-circle").forEach(circle => {
-        circle.classList.remove("selected");
-    });
-
-    button.classList.add("selected");
-
-    card.querySelector(".color-name").textContent = color;
-    card.querySelector(".main-image").src =
-        products[index].colors[color];
-
-    card.dataset.color = color;
-}
-
-/* Open details */
-function showDetails(index) {
-    selectedProduct = products[index];
-
-    const card = document.querySelectorAll(".card")[
-        visibleProducts.indexOf(selectedProduct)
-    ];
-
-    let color = card?.dataset.color || "Red";
-
-    document.getElementById("detailImage").src =
-        selectedProduct.colors[color];
-
-    document.getElementById("detailName").textContent =
-        selectedProduct.name;
-
-    document.getElementById("detailPrice").textContent =
-        "Rs. " + selectedProduct.price.toLocaleString();
-
-    document.getElementById("detailDescription").textContent =
-        selectedProduct.description;
-
-    document.getElementById("detailColor").textContent = color;
-
-    document.getElementById("popup").style.display = "flex";
-}
-
-function closeDetails() {
-    document.getElementById("popup").style.display = "none";
-}
-
-/* Add to cart */
-function addProductToCart(event, index) {
-    event.stopPropagation();
-    selectedProduct = products[index];
-    addToCart();
-}
-
-function addToCart() {
-    cartCount++;
-
-    document.getElementById("cartCount").textContent = cartCount;
-
-    alert(selectedProduct.name + " added to cart!");
-}
-
-/* Search */
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const query = document.getElementById("searchInput")
-        .value.toLowerCase().trim();
-
-    visibleProducts = products.filter(product =>
-        (product.name + " " + product.description)
-            .toLowerCase().includes(query)
-    );
-
-    displayProducts(visibleProducts);
-});
-
-/* Price filter */
-function filterPrice() {
-    const min = Number(document.getElementById("min").value) || 0;
-    const max = Number(document.getElementById("max").value) || Infinity;
-
-    visibleProducts = products.filter(product =>
-        product.price >= min && product.price <= max
-    );
-
-    displayProducts(visibleProducts);
-}
-
-displayProducts(visibleProducts);
-</script>
-
-</body>
-</html>
-
-
-    
-
-
-
-</body>
-</html>
-
+    <script src="eshan.js"></script>
 </body>
 </html>
