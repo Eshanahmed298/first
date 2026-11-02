@@ -3,990 +3,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>simple form</title>
-    <link rel="stylesheet" href="pic.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="mea.css">
 </head>
 <body>
-    <!DOCTYPE html>
-<html>
+    
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daraz Product Store</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    border-bottom: 2px solid #eee;
+}
+
+.logo {
+    color: #f85606;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search {
+    display: flex;
+    flex: 1;
+}
+
+.search input {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    background: #f4f4f4;
+    font-size: 16px;
+}
+
+.search button {
+    background: #f85606;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.categories {
+    padding: 14px 30px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Layout */
+.layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    padding: 20px 12px;
+}
+
+.filter {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.filter h3 {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.filter label {
+    display: block;
+    margin: 12px 0;
+    font-size: 13px;
+}
+
+.filter input[type="checkbox"] {
+    accent-color: #f85606;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 5px;
+}
+
+.price-inputs input {
+    width: 45%;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Product cards */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    align-items: start;
+}
+
+.card {
+    padding: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    min-width: 0;
+    transition: 0.2s;
+}
+
+.card:hover {
+    border-color: #eee;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+.product-image {
+    height: 205px;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.discount {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    background: #f85606;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.card h3 {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    height: 42px;
+    overflow: hidden;
+}
+
+.description {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+    height: 36px;
+    overflow: hidden;
+}
+
+.price {
+    color: #f85606;
+    font-size: 19px;
+    margin: 8px 0;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 12px;
+}
+
+.rating {
+    color: orange;
+    margin-top: 10px;
+}
+
+.rating span {
+    color: #777;
+    font-size: 12px;
+}
+
+.delivery {
+    color: #139d82;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* Color options */
+.color-options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.color-label {
+    font-size: 12px;
+    color: #555;
+}
+
+.color-circle {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 2px solid white;
+    outline: 1px solid #bbb;
+    cursor: pointer;
+    padding: 0;
+}
+
+.color-circle.selected {
+    outline: 2px solid #f85606;
+}
+
+.color-name {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+}
+
+.card-button {
+    padding: 9px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.details-btn {
+    background: #fff0e8;
+    color: #f85606;
+}
+
+.add-btn {
+    background: #f85606;
+    color: white;
+}
+
+/* Details popup */
+#popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0009;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.popup-content {
+    background: white;
+    width: 700px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    gap: 25px;
+}
+
+.popup-content img {
+    width: 45%;
+    object-fit: contain;
+}
+
+.popup-content p {
+    line-height: 1.6;
+    color: #666;
+}
+
+.popup-price {
+    color: #f85606;
+    font-size: 25px;
+}
+
+.close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    border: none;
+    background: white;
+    font-size: 25px;
+}
+
+.cart {
+    color: #f85606;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 150px 1fr;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .product-image {
+        height: 140px;
+    }
+
+    .card h3 {
+        font-size: 12px;
+    }
+
+    .popup-content {
+        flex-direction: column;
+    }
+
+    .popup-content img {
+        width: 100%;
+        height: 180px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <h1 class="es">Registration Form</h1>
+<header>
+    <div class="logo">◆ Daraz</div>
 
-    <form>
-        <label>Name:</label>
-        <input type="text" name="name">
-
-        <br><br>
-
-        <label>Email:</label>
-        <input type="email" name="email">
-
-        <br><br>
-
-        <label>Password:</label>
-        <input type="password" name="password">
-
-        <br><br>
-
-        <label>Age:</label>
-        <input type="number" name="age">
-
-        <br><br>
-
-        <button type="submit">Submit</button>
+    <form class="search" id="searchForm">
+        <input id="searchInput"
+               placeholder="Search products..."
+               value="headphones">
+        <button type="submit">⌕</button>
     </form>
 
-
-</body>
-<section class="features">
-    <div class="card">
-        <h2 class="m">🏍️ Riders</h2>
-        <p>Explore MotoGP riders, teams, and their latest statistics.</p>
-        <button>Explore Riders</button>
+    <div class="cart">
+        🛒 <span id="cartCount">0</span>
     </div>
+</header>
 
-    <div class="card">
-        <h2>🏆 Championship</h2>
-        <p >Check the current championship standings and points.</p>
-        <button>View Standings</button>
+<div class="categories">Categories　⌄</div>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="filter">
+            <h3>Service</h3>
+            <label><input type="checkbox"> Installment</label>
+            <label><input type="checkbox"> Cash On Delivery</label>
+            <label><input type="checkbox"> Free Shipping</label>
+            <label><input type="checkbox"> DarazMall</label>
+        </div>
+
+        <div class="filter">
+            <h3>Location</h3>
+            <label><input type="checkbox"> Pakistan</label>
+            <label><input type="checkbox" checked> China</label>
+        </div>
+
+        <div class="filter">
+            <h3>Price</h3>
+            <div class="price-inputs">
+                <input type="number" id="min" placeholder="Min">
+                <input type="number" id="max" placeholder="Max">
+            </div>
+            <button onclick="filterPrice()">Apply</button>
+        </div>
+
+        <div class="filter">
+            <h3>Rating</h3>
+            <div class="rating">★★★★★</div>
+        </div>
+
+    </aside>
+
+    <!-- Products -->
+    <main class="products" id="products"></main>
+
+</div>
+
+<!-- Product Details Popup -->
+<div id="popup" onclick="if(event.target===this)closeDetails()">
+    <div class="popup-content">
+
+        <button class="close" onclick="closeDetails()">×</button>
+
+        <img id="detailImage" src="" alt="Product">
+
+        <div>
+            <h2 id="detailName"></h2>
+            <div class="popup-price" id="detailPrice"></div>
+            <div class="rating">★★★★★</div>
+
+            <p id="detailDescription"></p>
+
+            <p><b>Selected Color:</b>
+                <span id="detailColor"></span>
+            </p>
+
+            <p><b>Delivery:</b> Options available at checkout.</p>
+
+            <button class="card-button add-btn"
+                    onclick="addToCart()">
+                Add to Cart
+            </button>
+
+            <button class="card-button details-btn"
+                    onclick="closeDetails()">
+                Continue Shopping
+            </button>
+        </div>
+
     </div>
-
-    <div class="card">
-        <h2>🏁 Race Calendar</h2>
-        <p>Find upcoming MotoGP races and racing circuits.</p>
-        <button>View Calendar</button>
-    </div>
-
-    <div class="card">
-        <h2>⚡ Race Results</h2>
-        <p>See the latest race results and finishing positions.</p>
-        <button>View Results</button>
-    </div>
-
-</section>
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nova - Modern Landing Page</title>
-
-    <style>
-        * {
-            margin: 4px;
-            padding: 4px;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #181717;
-            background: white;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* NAVBAR */
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #eeeeee;
-            background: #dad8d8;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-        }
-
-        .logo span {
-            color: #2b08ca;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #d80d0d;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #2708b1;
-        }
-
-        .nav-btn {
-            background: #171717;
-            color: rgb(216, 11, 11);
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            background:
-                radial-gradient(circle at 20% 20%, #290797 0, transparent 30%),
-                radial-gradient(circle at 80% 30%, #097dbb 0, transparent 30%),
-                #940a0a;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid #242222;
-            border-radius: 30px;
-            color: #2508a8;
-            font-size: 14px;
-            margin-bottom: 25px;
-            background: rgb(138, 16, 16);
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 7vw, 82px);
-            line-height: 1.05;
-            letter-spacing: -3px;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #210c81;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 28px;
-            border-radius: 9px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #17046b;
-            color: rgb(36, 5, 5);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-secondary {
-            border: 1px solid #940404;
-            background: rgb(41, 38, 38);
-        }
-
-        .btn-secondary:hover {
-            background: #f5f5f5;
-        }
-
-        /* TRUST */
-        .trust {
-            padding: 45px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            text-align: center;
-        }
-
-        .trust p {
-            color: #999;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-
-        .companies {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            color: #888;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        /* FEATURES */
-        .features {
-            padding: 100px 0;
-        }
-
-        .section-heading {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 60px;
-        }
-
-        .section-heading span {
-            color: #6c4df6;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .section-heading h2 {
-            font-size: 45px;
-            margin: 10px 0 15px;
-            line-height: 1.1;
-        }
-
-        .section-heading p {
-            color: #777;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .feature-card {
-            padding: 35px;
-            border: 1px solid #e8e8e8;
-            border-radius: 18px;
-            transition: 0.3s;
-            background: white;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-        }
-
-        .icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0edff;
-            color: #6c4df6;
-            font-size: 24px;
-            margin-bottom: 22px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 12px;
-            font-size: 21px;
-        }
-
-        .feature-card p {
-            color: #777;
-            font-size: 15px;
-        }
-
-        /* ABOUT */
-        .about {
-            padding: 100px 0;
-            background: #f8f8fb;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .about-image {
-            min-height: 450px;
-            border-radius: 25px;
-            background:
-                linear-gradient(135deg, #6c4df6, #9c8aff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 100px;
-            box-shadow: 0 30px 60px rgba(108,77,246,0.25);
-        }
-
-        .about-text span {
-            color: #6c4df6;
-            font-weight: bold;
-        }
-
-        .about-text h2 {
-            font-size: 48px;
-            line-height: 1.1;
-            margin: 12px 0 20px;
-        }
-
-        .about-text p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .check-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .check-list li {
-            margin: 12px 0;
-            font-weight: 600;
-        }
-
-        .check-list li::before {
-            content: "✓";
-            color: #6c4df6;
-            margin-right: 10px;
-        }
-
-        /* TESTIMONIALS */
-        .testimonials {
-            padding: 100px 0;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .testimonial {
-            padding: 30px;
-            border: 1px solid #eee;
-            border-radius: 18px;
-        }
-
-        .stars {
-            color: #f5a623;
-            margin-bottom: 15px;
-        }
-
-        .testimonial p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .person {
-            font-weight: bold;
-        }
-
-        .person small {
-            display: block;
-            color: #999;
-            font-weight: normal;
-            margin-top: 3px;
-        }
-
-        /* CTA */
-        .cta {
-            padding: 100px 0;
-        }
-
-        .cta-box {
-            background: #171717;
-            color: white;
-            padding: 80px 30px;
-            text-align: center;
-            border-radius: 25px;
-        }
-
-        .cta-box h2 {
-            font-size: 50px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .cta-box p {
-            color: #bbb;
-            max-width: 550px;
-            margin: 0 auto 30px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #f7f7f7;
-            padding: 50px 0 25px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-brand p {
-            color: #777;
-            margin-top: 12px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 70px;
-        }
-
-        .footer-column h4 {
-            margin-bottom: 15px;
-        }
-
-        .footer-column a {
-            display: block;
-            color: #777;
-            margin: 8px 0;
-            font-size: 14px;
-        }
-
-        .copyright {
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-            color: #999;
-            font-size: 13px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .feature-grid,
-            .testimonial-grid,
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                min-height: 300px;
-            }
-
-            .section-heading h2,
-            .about-text h2,
-            .cta-box h2 {
-                font-size: 36px;
-            }
-
-            .companies {
-                gap: 25px;
-            }
-
-            .footer-links {
-                gap: 35px;
-            }
-        }
-        .ed{
-            image-orientation: flip;
-            margin-left: 120%;
-            border-radius: 40px solid black;
-            border: #171717;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- NAVBAR -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">No<span>va</span></a>
-
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                </ul>
-
-                <a href="#contact" class="nav-btn">Get Started</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-
-                <div class="badge">
-                    ✦ The future of digital experiences
+</div>
+
+<script>
+const products = [
+    {
+        name: "Wired Gaming Headset for PS4 and Xbox",
+        price: 1790,
+        oldPrice: 2560,
+        discount: "30%",
+        rating: "(42)",
+        colors: {
+            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDQP4-uNWGP68lNdLZ9J7y98P9dhWw98MYoFIf5-wjHA&s",
+            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtaOhxmFsqcLs3L0IbWXpUajt4RFSUnoWYdK61rAhQA&s=10",
+            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIxQZn_6fKd4P3ViJZFHkv5HeSVadsagw0JkNoQ5GlrA&s=10",
+        },
+        description: "Comfortable gaming headset with padded ear cups, a microphone and clear sound for gaming, calls and music."
+    },
+    {
+        name: "Colorful Over Ear Headphones with Mic",
+        price: 1739,
+        oldPrice: 3499,
+        discount: "50%",
+        rating: "(15)",
+        colors: {
+            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqrFUkzQ1MFaIXk2VDu0lPoJjnnKDasNDmxiIcZLN9Cg&s=10",
+            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlujVtD7-IBvAutSj43KBT2SD42bUIpYX_GUQBKL0ZNw&s=10",
+            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcSQlOYSq7Dj8_ZXVfwidH_B8WyZn1dVtUEp4_colZNw&s=10",
+        },
+        description: "Stylish over-ear headphones for comfortable listening, music, videos and everyday entertainment."
+    },
+    {
+        name: "Over Ear Headphones for Laptop and Phone",
+        price: 1648,
+        oldPrice: 3400,
+        discount: "52%",
+        rating: "(28)",
+        colors: {
+            Red: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYi-a-prBQtGhhFHBGV_JSrbHoFGENQZHVKjSbEuvjbQ&s=10",
+            Blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKUpYXc9O0-xRj9gQqo84J0DlgcH70pfnEHnbmXRkU1w&s=10",
+            Black: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6M660oaccmWXMDS3k6GDMMeVtoSG6__ZrJ6J7uhCHbg&s=10"
+        },
+        description: "Modern headphones with cushioned ear pads for laptops, phones and entertainment."
+    }
+];
+
+let visibleProducts = [...products];
+let selectedProduct = null;
+let cartCount = 0;
+
+function displayProducts(list) {
+    const container = document.getElementById("products");
+    container.innerHTML = "";
+
+    if (list.length === 0) {
+        container.innerHTML = "<p>No products found.</p>";
+        return;
+    }
+
+    list.forEach(product => {
+        const index = products.indexOf(product);
+
+        container.insertAdjacentHTML("beforeend", `
+            <article class="card">
+
+                <div class="product-image"
+                     onclick="showDetails(${index})">
+                    <img class="main-image"
+                         src="${product.colors.Blue}"
+                         alt="${product.name}">
+                    <span class="discount">-${product.discount}</span>
                 </div>
 
-                <h1>
-                    Build something
-                    <span>extraordinary.</span>
-                    <img class="ed" src="795.png" alt="" width="350px" height="400px">
-                </h1>
+                <h3 onclick="showDetails(${index})">
+                    ${product.name}
+                </h3>
 
-                <p>
-                    Create beautiful digital experiences that help your
-                    business grow faster, connect with customers, and stand out
-                    from the competition.
-                </p>
+                <p class="description">${product.description}</p>
 
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        Start Creating →
-                    </a>
+                <div class="color-options">
+                    <span class="color-label">Color:</span>
 
-                    <a href="#features" class="btn btn-secondary">
-                        Explore Features
-                    </a>
+                    <button class="color-circle selected"
+                        style="background:red"
+                        title="Red"
+                        onclick="selectColor(event,${index},'Red',this)">
+                    </button>
+
+                    <button class="color-circle"
+                        style="background:blue"
+                        title="Blue"
+                        onclick="selectColor(event,${index},'Blue',this)">
+                    </button>
+
+                    <button class="color-circle"
+                        style="background:black"
+                        title="Black"
+                        onclick="selectColor(event,${index},'Black',this)">
+                    </button>
+
+                    <span class="color-name">Red</span>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST -->
-    <section class="trust">
-        <div class="container">
-
-            <p>TRUSTED BY INNOVATIVE TEAMS</p>
-
-            <div class="companies">
-                <span>Vertex</span>
-                <span>Flow</span>
-                <span>Orbit</span>
-                <span>Vertex</span>
-                <span>Cloudly</span>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features" id="features">
-        <div class="container">
-
-            <div class="section-heading">
-                <span>FEATURES</span>
-                <h2>Everything you need to grow</h2>
-                <p>
-                    Powerful tools designed to make your workflow easier,
-                    faster, and more productive.
-                </p>
-            </div>
-
-            <div class="feature-grid">
-
-                <div class="feature-card">
-                    <div class="icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>
-                        Optimized performance gives your users a smooth and
-                        incredibly fast experience.
-                    </p>
+                <div class="price">
+                    Rs. ${product.price.toLocaleString()}
                 </div>
 
-                <div class="feature-card">
-                    <div class="icon">◈</div>
-                    <h3>Modern Design</h3>
-                    <p>
-                        Clean and beautiful interfaces that look great on
-                        every device and screen size.
-                    </p>
+                <span class="old-price">
+                    Rs. ${product.oldPrice.toLocaleString()}
+                </span>
+
+                <span style="font-size:12px">
+                    -${product.discount}
+                </span>
+
+                <div class="delivery">✓ Delivery options available</div>
+
+                <div class="rating">
+                    ★★★★★ <span>${product.rating}</span>
                 </div>
 
-                <div class="feature-card">
-                    <div class="icon">🔒</div>
-                    <h3>Secure Platform</h3>
-                    <p>
-                        Keep your information safe with modern security
-                        practices and reliable infrastructure.
-                    </p>
-                </div>
+                <button class="card-button details-btn"
+                    onclick="showDetails(${index})">
+                    View Details
+                </button>
 
-                <div class="feature-card">
-                    <div class="icon">📊</div>
-                    <h3>Smart Analytics</h3>
-                    <p>
-                        Understand your users and make better decisions using
-                        powerful analytics.
-                    </p>
-                </div>
+                <button class="card-button add-btn"
+                    onclick="addProductToCart(event,${index})">
+                    Add to Cart
+                </button>
 
-                <div class="feature-card">
-                    <div class="icon">☁</div>
-                    <h3>Cloud Ready</h3>
-                    <p>
-                        Access your work anywhere and scale your projects
-                        effortlessly.
-                    </p>
-                </div>
+            </article>
+        `);
+    });
+}
 
-                <div class="feature-card">
-                    <div class="icon">♾</div>
-                    <h3>Easy Integration</h3>
-                    <p>
-                        Connect your favorite tools and services without
-                        complicated setup.
-                    </p>
-                </div>
+/* Change color and image */
+function selectColor(event, index, color, button) {
+    event.stopPropagation();
 
-            </div>
-        </div>
-    </section>
+    const card = button.closest(".card");
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
-        <div class="container">
+    card.querySelectorAll(".color-circle").forEach(circle => {
+        circle.classList.remove("selected");
+    });
 
-            <div class="about-content">
+    button.classList.add("selected");
 
-                <div class="about-image">
-                    ✦
-                </div>
+    card.querySelector(".color-name").textContent = color;
+    card.querySelector(".main-image").src =
+        products[index].colors[color];
 
-                <div class="about-text">
-                    <span>WHY NOVA?</span>
+    card.dataset.color = color;
+}
 
-                    <h2>
-                        Designed for people who think bigger.
-                    </h2>
+/* Open details */
+function showDetails(index) {
+    selectedProduct = products[index];
 
-                    <p>
-                        Nova gives teams the tools they need to turn ideas
-                        into powerful digital products without unnecessary
-                        complexity.
-                    </p>
+    const card = document.querySelectorAll(".card")[
+        visibleProducts.indexOf(selectedProduct)
+    ];
 
-                    <ul class="check-list">
-                        <li>Simple and intuitive interface</li>
-                        <li>Built for teams of every size</li>
-                        <li>Powerful customization options</li>
-                        <li>Reliable customer support</li>
-                    </ul>
+    let color = card?.dataset.color || "Red";
 
-                    <a href="#contact" class="btn btn-primary">
-                        Learn More →
-                    </a>
-                </div>
+    document.getElementById("detailImage").src =
+        selectedProduct.colors[color];
 
-            </div>
-        </div>
-    </section>
+    document.getElementById("detailName").textContent =
+        selectedProduct.name;
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials" id="reviews">
-        <div class="container">
+    document.getElementById("detailPrice").textContent =
+        "Rs. " + selectedProduct.price.toLocaleString();
 
-            <div class="section-heading">
-                <span>TESTIMONIALS</span>
-                <h2>Loved by our customers</h2>
-                <p>
-                    See what people are saying about their experience with
-                    Nova.
-                </p>
-            </div>
+    document.getElementById("detailDescription").textContent =
+        selectedProduct.description;
 
-            <div class="testimonial-grid">
+    document.getElementById("detailColor").textContent = color;
 
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p>
-                        "Nova completely changed the way our team works.
-                        Everything feels simpler and more organized."
-                    </p>
-                    <div class="person">
-                        Sarah Khan
-                        <small>Product Designer</small>
-                    </div>
-                </div>
+    document.getElementById("popup").style.display = "flex";
+}
 
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p>
-                        "The design is beautiful and the performance is
-                        excellent. Our customers immediately noticed the
-                        difference."
-                    </p>
-                    <div class="person">
-                        Ahmed Ali
-                        <small>Startup Founder</small>
-                    </div>
-                </div>
+function closeDetails() {
+    document.getElementById("popup").style.display = "none";
+}
 
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p>
-                        "A fantastic platform for teams that want to move
-                        quickly without sacrificing quality."
-                    </p>
-                    <div class="person">
-                        Maria James
-                        <small>Marketing Manager</small>
-                    </div>
-                </div>
+/* Add to cart */
+function addProductToCart(event, index) {
+    event.stopPropagation();
+    selectedProduct = products[index];
+    addToCart();
+}
 
-            </div>
-        </div>
-    </section>
+function addToCart() {
+    cartCount++;
 
-    <!-- CTA -->
-    <section class="cta" id="contact">
-        <div class="container">
+    document.getElementById("cartCount").textContent = cartCount;
 
-            <div class="cta-box">
+    alert(selectedProduct.name + " added to cart!");
+}
 
-                <h2>Ready to build something amazing?</h2>
+/* Search */
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-                <p>
-                    Start your journey today and turn your ideas into
-                    something extraordinary.
-                </p>
+    const query = document.getElementById("searchInput")
+        .value.toLowerCase().trim();
 
-                <a href="#" class="btn btn-primary">
-                    Get Started Today →
-                </a>
+    visibleProducts = products.filter(product =>
+        (product.name + " " + product.description)
+            .toLowerCase().includes(query)
+    );
 
-            </div>
+    displayProducts(visibleProducts);
+});
 
-        </div>
-    </section>
+/* Price filter */
+function filterPrice() {
+    const min = Number(document.getElementById("min").value) || 0;
+    const max = Number(document.getElementById("max").value) || Infinity;
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
+    visibleProducts = products.filter(product =>
+        product.price >= min && product.price <= max
+    );
 
-            <div class="footer-content">
+    displayProducts(visibleProducts);
+}
 
-                <div class="footer-brand">
-                    <div class="logo">No<span>va</span></div>
+displayProducts(visibleProducts);
+</script>
 
-                    <p>
-                        Building better digital experiences for modern teams.
-                    </p>
-                </div>
-
-                <div class="footer-links">
-
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#">Features</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">Updates</a>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <a href="#">About</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Contact</a>
-                    </div>
-
-                    <div class="footer-column">
-                        <h4>Social</h4>
-                        <a href="#">Instagram</a>
-                        <a href="#">Facebook</a>
-                        <a href="#">LinkedIn</a>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="copyright">
-                © 2026 Nova. All rights reserved.
-            </div>
-
-        </div>
-    </footer>
-
-<h2>What Can JavaScript Do?</h2>
-
-<p>JavaScript can change HTML attribute values.</p>
-
-<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
-
-<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
-
-<img src="795.png" alt="">
-
-<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
-
-<script src="/eshan.js"></script>
 </body>
 </html>
 
-</html>
-```
 
-</html>
     
+
+
+
 </body>
 </html>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature Cards</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f3f4f6;
-            padding: 30px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #222;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: white;
-            width: 250px;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 12px #00000015;
-        }
-
-        .card h2 {
-            color: #2563eb;
-        }
-
-        button {
-            background: #2563eb;
-            color: white;
-            padding: 10px 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1d4ed8;
-        }
-
-        .description {
-            display: none;
-            margin-top: 15px;
-            color: #444;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Our Features</h1>
-
-    <div class="container">
-
-        <div class="card">
-            <h2>⚡ Fast Performance</h2>
-            <p>Make your website fast and smooth.</p>
-            <button onclick="toggleDescription('desc1', this)">
-                Learn More
-            </button>
-            <div class="description" id="desc1">
-                Optimize your website for faster loading
-                and a better user experience.
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>📱 Responsive Design</h2>
-            <p>Works on every device.</p>
-            <button onclick="toggleDescription('desc2', this)">
-                Learn More
-            </button>
-            <div class="description" id="desc2">
-                This design adjusts to mobile, tablet,
-                and desktop screen sizes.
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>🔒 Secure System</h2>
-            <p>Keep your data protected.</p>
-            <button onclick="toggleDescription('desc3', this)">
-                Learn More
-            </button>
-            <div class="description" id="desc3">
-                Security practices help protect your
-                website and user information.
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        function toggleDescription(id, button) {
-            const description =
-                document.getElementById(id);
-
-            if (description.style.display === "block") {
-                description.style.display = "none";
-                button.textContent = "Learn More";
-            } else {
-                description.style.display = "block";
-                button.textContent = "Show Less";
-            }
-        }
-    </script>
 
 </body>
 </html>
